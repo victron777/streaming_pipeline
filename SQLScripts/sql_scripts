@@ -1,0 +1,52 @@
+
+insert into departments_inc (department_name, modified_date) values
+('Systems1',CURRENT_TIMESTAMP);
+
+select * from departments_inc;
+
+truncate table departments_inc
+
+
+SELECT * --abs(DATE_PART('minute', modified_date - current_timestamp)) as diff
+from departments_inc
+where  abs(DATE_PART('minute', modified_date - current_timestamp)) <= 1;
+
+SELECT abs(DATE_PART('minute', '2021-02-06 22:00:35'::timestamp - current_timestamp)) as diff
+from departments_inc;
+
+SELECT DATE_PART('minute', '2011-12-30 08:56:10'::timestamp - '2011-12-30 08:54:55'::timestamp);
+
+SELECT (DATE_PART('day', '2011-12-30 08:56:10'::timestamp - '2011-12-30 08:54:55'::timestamp) * 24 +
+               DATE_PART('hour', '2011-12-30 08:56:10'::timestamp - '2011-12-30 08:54:55'::timestamp)) * 60 +
+               DATE_PART('minute', '2011-12-30 08:56:10'::timestamp - '2011-12-30 08:54:55'::timestamp);
+
+
+
+select 	*,
+		datediff(mi, modified_date, current_timestamp) as diff
+from departments_inc;
+
+
+
+insert into departments_inc (department_name, modified_date)
+select department_name, CURRENT_TIMESTAMP as modified_date from departments;
+
+
+
+
+
+update departments_inc set
+
+select CURRENT_TIMESTAMP
+
+select * from departments;
+
+drop table departments_inc;
+
+CREATE TABLE departments_inc (
+  department_id serial NOT NULL,
+  department_name VARCHAR(45) NOT NULL,
+  modified_date TIMESTAMP,
+  PRIMARY KEY (department_id)
+);
+
